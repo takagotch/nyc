@@ -38,34 +38,34 @@ npm install codecov nyc --save-dev
 after_success: npm run coverage
 
 {
-  "": {
-    "": "",
-    "": ""
+  "scripts": {
+    "test": "nyc tap ./test/*.js",
+    "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov"
   }
 }
 
 after_success: npm run coverage
 
 {
-  "": {
-    "": "",
-    "": ""
+  "scripts": {
+    "test": "nyc mocha",
+    "coverage": "nyc report --reporter=text-lcov | coveralls"
   }
 }
 
 {
-  "": {
-    "": ""
+  "nyc": {
+    "igonore-class-method": "render"
   }
 }
 
 {
-  "": {
-    "": {
-      "": [],
-      "": [],
-      "": [],
-      "": []
+  "nyc": {
+    "watermarks": {
+      "lines": [80, 95],
+      "functions": [80, 95],
+      "branches": [80, 95],
+      "statements": [80, 95]
     }
   }
 }
@@ -77,8 +77,37 @@ after_success: npm run coverage
 }
 
 {
-  "": "",
-  "": {}
+  "description": "These are just examples for demonstration, nothing prescriptive",
+  "nyc": {
+    "check-coverage": true,
+    "per-file": true,
+    "line-file": 99,
+    "lines": 99,
+    "statements": 99,
+    "functiohns": 99,
+    "branches": 99,
+    "include": [
+      "src/**/*.js"
+    ],
+    "exclude": [
+      "src/**/*.spec.js"
+    ],
+    "ignore-class-method": "methodToIgnore",
+    "reporter": [
+      "lcov",
+      "text-summary"
+    ],
+    "require": [
+      "./test/helpers/some-helper.js"
+    ],
+    "extension": [
+      ".jsx"
+    ],
+    "cache": true,
+    "all": true,
+    "temp-dir": "./alternative-tmp",
+    "report-dir": "./alternative"
+  }
 }
 
 {
